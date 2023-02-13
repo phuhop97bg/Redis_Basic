@@ -8,12 +8,12 @@ import (
 
 func main() {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "",
-		DB:       0,
+		Addr:     "10.8.12.195:7002",
+		DB:       14,
+		Password: "p8eruwyODJ5Vnr2w3qlc",
 	})
-	topic := "topic_dog"
-	pubsub := client.Subscribe(topic)
+	topic := "topic_dog*"
+	pubsub := client.PSubscribe(topic)
 	defer pubsub.Close()
 
 	fmt.Printf("subcribe successfully topic %s \n", topic)

@@ -8,14 +8,17 @@ import (
 
 func main() {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "", // no password set
-		DB:       0,  // use default DB
+		Addr:     "10.8.12.195:7002",
+		DB:       15,
+		Password: "p8eruwyODJ5Vnr2w3qlc",
 	})
 
 	// set key và giá trị
-	err := client.Set("key", "value", time.Second*10).Err()
+	key := "key1234"
+	value := "value1231424125"
+	err := client.Set(key, value, time.Second*10).Err()
 	if err != nil {
 		panic(err)
 	}
+	client.LPush("myset123", key)
 }

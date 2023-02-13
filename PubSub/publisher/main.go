@@ -8,17 +8,18 @@ import (
 
 func main() {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "",
-		DB:       0,
+		Addr:     "10.8.12.195:7002",
+		DB:       14,
+		Password: "p8eruwyODJ5Vnr2w3qlc",
 	})
-	err := client.ConfigSet("notify-keyspace-events", "KEA").Err()
-	topic := "topic_dog"
-	msg := "Hello Dog"
-	err = client.Publish(topic, msg).Err()
+	topic := "topic_dog123"
+	msg := "ádasd"
+	err := client.Publish(topic, msg).Err()
 
 	if err != nil {
 		fmt.Println(err)
+	} else {
+		fmt.Printf("publish to topic %s ok", topic)
 	}
-	fmt.Printf("publish to topic %s ok", topic)
+
 }
